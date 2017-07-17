@@ -14,8 +14,8 @@ GP = GPIOProcessor()
 try:
     
     # Create GPIO variables
-    trig    = GP.getPin32()
-    echo    = GP.getPin27()
+    trig    = GP.getPin27()
+    echo    = GP.getPin32()
     green   = GP.getPin24()
     yellow  = GP.getPin25()
     red     = GP.getPin23()

@@ -1,9 +1,10 @@
 import mraa
 import time
 import math
+import pygame
 
-trigger = mraa.Gpio(27)
-echo = mraa.Gpio(32)
+trigger = mraa.Gpio(32)
+echo = mraa.Gpio(27)
 
 trigger.dir(mraa.DIR_OUT)
 echo.dir(mraa.DIR_IN)
@@ -14,7 +15,7 @@ speed = 34000
 pulse_start = time.time()
 pulse_end = time.time()
 
-print "Inciando Leitura Ultrassom:"
+print "Iniciando leitura ultrassom:"
 time.sleep(3)
 timeout=time.time()+D
 
@@ -37,6 +38,12 @@ while True:
         distance=pulse_duration*speed/2
         distance=round(distance,0)
         print "Distancia:",distance,"cm"
-        
+
+        if distance < 10:
+            print "Perto demais"
+            pygame.init()
+            pygame.mixer.music.load("ding.ogg")
+            pygame.mixer.music.play()
+
     if time.time() > timeout:
         break

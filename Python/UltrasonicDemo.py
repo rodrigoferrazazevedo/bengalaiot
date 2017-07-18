@@ -14,8 +14,8 @@ GP = GPIOProcessor()
 try:
     
     # Create GPIO variables
-    trig    = GP.getPin27()
-    echo    = GP.getPin32()
+    trig    = GP.getPin32()
+    echo    = GP.getPin27()
     green   = GP.getPin24()
     yellow  = GP.getPin25()
     red     = GP.getPin23()
@@ -52,7 +52,8 @@ try:
             pulse_end=time.time()
         print echo.getValue()
         # Calculate total pulse duration
-        pulse_duration=pulse_end-pulse_start
+        if echo.getValue()==0:		
+            pulse_duration=pulse_end-pulse_start
 
         # Use pulse duration to calculate distance
         # Remember that the pulse has to go there and come back
